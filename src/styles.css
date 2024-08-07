@@ -1,0 +1,224 @@
+/* Base Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: black; /* Black background for the entire page */
+  color: white; /* White text color */
+  padding:0px !important;
+}
+
+
+/* Dark Mode */
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+
+/* App Layout */
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 230px; /* Expanded width */
+  background: #2e2e2e; /* Light grey background for sidebar */
+  color: white;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s, background-color 0.3s;
+  overflow: hidden;
+  z-index: 2; /* Ensure sidebar is above content */
+}
+
+.sidebar.collapsed {
+  width: 50px; /* Collapsed width */
+  border-right: 1px solid transparent !important;
+}
+
+.sidebar .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.sidebar .logo img {
+  width: 40px;
+  height: auto;
+}
+
+.sidebar h2 {
+  margin-top: 0;
+  transition: opacity 0.3s;
+}
+
+.sidebar.collapsed h2 {
+  opacity: 0;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+}
+
+.sidebar ul li {
+  margin: 10px 0;
+  position: relative;
+}
+
+.sidebar ul li.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5px;
+  height: 100%;
+  background: aqua;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  transition: color 0.3s;
+  border-radius: 5px;
+  background: #3e3e3e; /* Grey background for each item */
+}
+
+.sidebar ul li a:hover,
+.sidebar.collapsed .sidebar ul li:hover a {
+  color: aqua; /* Change text color to aqua on hover */
+  background: #4e4e4e; /* Slightly darker grey on hover */
+}
+
+.sidebar ul li a svg {
+  color: white; /* Thin white icons */
+  transition: color 0.3s;
+}
+
+/* Search Bar */
+.navbar .search-bar {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.navbar .search-bar input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 0px;
+  border: 1px solid #4e4e4e; /* Grey border */
+  background: #2e2e2e; /* Grey background */
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.navbar .search-bar input::placeholder {
+  color: #a3a3a3; /* Placeholder text color */
+}
+
+.navbar .search-bar input::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  /* background: url('/path-to-magnifying-glass-icon.svg') no-repeat center center; */
+  background-size: 20px 20px;
+  margin-right: 10px;
+}
+
+.dark-mode .navbar .search-bar input {
+  background: #2e2e2e;
+  border: 1px solid #4e4e4e;
+}
+
+/* Navbar */
+.navbar {
+  background: #1a1a1a; /* Dark background for navbar */
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: left 0.3s;
+  margin-left: 250px; /* Adjust to match sidebar width */
+  width: calc(100% - 250px); /* Full width minus sidebar width */
+  position: fixed;
+  top: 0;
+  left: 250px; /* Start position aligned with sidebar width */
+  z-index: 1; /* Ensure navbar is above content but below sidebar */
+  border-radius:0px !important;
+}
+
+.dark-mode .navbar {
+  background: #1a1a1a;
+}
+
+.navbar .icons {
+  display: flex;
+  align-items: center;
+}
+
+.navbar .icons button {
+  background: #3e3e3e; /* Grey background for icons */
+  color: white; /* Thin white icons */
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  margin-left: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s;
+}
+
+.navbar .icons button:hover {
+  color: aqua; /* Change icon color to aqua on hover */
+  background: #4e4e4e; /* Slightly darker grey on hover */
+}
+
+.navbar .profile-icon {
+  margin-left: 15px;
+  background: #3e3e3e;
+  color: white;
+}
+
+.navbar .profile-icon img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    position: static;
+  }
+
+  .navbar {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
